@@ -7,7 +7,7 @@ ini_set('display_startup_errors', TRUE);
 require('Database.php');
 use model\Database as db;
 
-class Pessoa_Fisica extends Pessoa {
+class Vendedor extends Pessoa_Fisica {
     public $conn;
     
     public function __construct(){
@@ -16,7 +16,7 @@ class Pessoa_Fisica extends Pessoa {
     }
 
     public function getAll(){
-        $sql = "SELECT * from Pessoa_Fisica";
+        $sql = "SELECT * from Vendedor";
         $result=$this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
@@ -27,9 +27,9 @@ class Pessoa_Fisica extends Pessoa {
 
     }
 
-    public function getPessoaFisica($id){
-        $sql = "SELECT * from Pessoa_Fisica 
-                WHERE idPessoa_Fisica=$id";
+    public function getVendedor($id){
+        $sql = "SELECT * from Vendedor 
+                WHERE idVendedor=$id";
         $result = $this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
@@ -40,25 +40,24 @@ class Pessoa_Fisica extends Pessoa {
 
     public function create($data){
 
-        $sql = "INSERT INTO Pessoa_Fisica (rg,cpf,data_nascimento,idPessoa) 
-                VALUES ('$data->rg','$data->cpf',$data->data_nascimento,$data->idPessoa)";
+        $sql = "INSERT INTO Vendedor (salario,idPessoa_Fisica) 
+                VALUES ($data->salario,$data->idPessoaFisica)";
         $result=$this->conn->query($sql);
 
         return $result;
     }
 
     public function update($data){
-        $sql = "UPDATE Pessoa_Fisica 
-                set rg='$data->rg',cpf='$data->cpf',
-                data_nascimento=$data->data_nascimento,idPessoa='$data->idPessoa',
-                WHERE idPessoa_Fisica=$data->idPessoa_Fisica";
+        $sql = "UPDATE Vendedor 
+                set ultima_compra=$data->ultima_compra 
+                WHERE idVendedor=$data->idVendedor";
         $result = $this->conn->query($sql);
 
         return $result;
     }
 
     public function delete($id){
-        $sql = "DELETE from Pessoa_Fisica WHERE idPessoa_Fisica=$id";
+        $sql = "DELETE from Vendedor WHERE idVendedor=$id";
         $result= $this->conn->query($sql);
 
         return $result;

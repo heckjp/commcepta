@@ -10,7 +10,7 @@ require('Database.php');
 use model\Database as db;
 
 
-class Usuario{
+class Usuario {
 
     public $conn;
     public function __construct(){
