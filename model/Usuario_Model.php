@@ -31,6 +31,7 @@ class Usuario {
     }
 
     public function getUser($usr){
+        $usr = mysqli_real_escape_string($this->conn,$usr);
         $sql = "SELECT * from Usuario 
                 WHERE login='$usr'";
         $result = $this->conn->query($sql);
@@ -44,15 +45,17 @@ class Usuario {
 
     public function create($data){
 
+        $login = mysqli_real_escape_string($this->conn,$data->login);
         $sql = "INSERT INTO Usuario (login,senha,idPessoa)
-                VALUES ($data->login,$data->senha,$data->idPessoa)";
+                VALUES ($login,$data->senha,$data->idPessoa)";
         $result=$this->conn->query($sql);
 
         return $result;
     }
 
     public function updateUser($data){
-        $sql = "UPDATE Usuario set login='$data->login'
+        $login = mysqli_real_escape_string($this->conn,$data->login);
+        $sql = "UPDATE Usuario set login='$login' 
                 WHERE idUsuario=$data->idUsuario";
         $result = $this->conn->query($sql);
 

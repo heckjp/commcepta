@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +48,18 @@
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="senha" name="senha" placeholder="Senha">
+                    </div>
+                    <div class="text-center text-danger">
+                        <span>
+                        <?php 
+                            error_reporting(E_ALL);
+                            ini_set('display_errors', TRUE);
+                            ini_set('display_startup_errors', TRUE);
+                            if(isset($_SESSION['msg'])){
+                                echo $_SESSION['msg'];
+                            }
+                        ?>
+                        </span>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                       Login

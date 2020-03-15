@@ -10,33 +10,41 @@ require_once("../model/Usuario_Model.php");
 use model\Usuario as UsuarioModel;
 
 class LoginController{
-    
-  public function login($data){
+  private $db;
+
+  public function __construct(){
     session_start();
+    $this->db = new UsuarioModel;
+  }
+
+  public function login($data){
     $data = json_decode(json_encode($data));
-    $db = new UsuarioModel;
-    $usr = $db->getUser($data->login,$data->senha);
+    $usr = $this->db->getUser($data->login,$data->senha);
     if(sizeof($usr)==1){
       $usr = $usr[0];
       print_r($data->senha);
       print_r($usr->senha);
       if(password_verify($data->senha,$usr->senha)){
+        if(isset($_SESSION['msg'])){
+          unset($_SESSION['msg']);
+        }
         $_SESSION['user'] = $usr->login;
         header('Location:../home.php');
        }
        else{
+         $_SESSION['msg'] = 'Usuário ou senha inválida!';
         header('Location:../login.php');
        }
     }
     else{
+      $_SESSION['msg'] = 'Usuário ou senha inválida';
       header('Location:../login.php');
     }
   }
 
   public function logout(){
-    session_start();
     session_destroy();
-      header('Location:../index.php');
+    header('Location:../index.php');
   }
 
 }
