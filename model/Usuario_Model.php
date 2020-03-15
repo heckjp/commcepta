@@ -30,17 +30,16 @@ class Usuario {
         return json_encode($data);
     }
 
-    public function getUser($usr,$pwd){
+    public function getUser($usr){
         $sql = "SELECT * from Usuario 
-                WHERE login='$usr' 
-                AND senha='$pwd'";
+                WHERE login='$usr'";
         $result = $this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
             $data[]=$r;
         }
 
-        return json_encode($data);
+        return json_decode(json_encode($data));
     }
 
     public function create($data){
