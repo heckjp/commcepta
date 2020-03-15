@@ -83,8 +83,5 @@ class Usuario {
 
 }
 
-$usuarios = new Usuario;
-print_r($usuarios->getAll());
-
 
 ?>
