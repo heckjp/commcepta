@@ -17,6 +17,10 @@
                 if($submenu=='listar'){
                     include_once('view/page/produto/listar.php');
                 }
+
+                if($submenu=='editar'){
+                    include_once('view/page/produto/editar.php');
+                }
                 
             } else{
                 include_once('view/page/produto/listar.php');
@@ -77,6 +81,13 @@
 
                 if($submenu=='listar'){
                     include_once('view/page/usuario/listar.php');
+                }
+
+                if($submenu=='editar'){
+                    include_once('view/page/usuario/editar.php');
+                }
+                if($submenu=='delete'){
+                    include_once('view/page/usuario/delete.php');
                 }
                 
             } else{

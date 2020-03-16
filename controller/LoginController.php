@@ -19,16 +19,15 @@ class LoginController{
 
   public function login($data){
     $data = json_decode(json_encode($data));
-    $usr = $this->db->getUser($data->login,$data->senha);
+    $usr = $this->db->getUserByLogin($data->login);
     if(sizeof($usr)==1){
       $usr = $usr[0];
-      print_r($data->senha);
-      print_r($usr->senha);
       if(password_verify($data->senha,$usr->senha)){
         if(isset($_SESSION['msg'])){
           unset($_SESSION['msg']);
         }
         $_SESSION['user'] = $usr->login;
+        $_SESSION['id'] = $usr->idUsuario;
         header('Location:../home.php');
        }
        else{

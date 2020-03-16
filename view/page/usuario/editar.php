@@ -5,10 +5,20 @@ ini_set('display_startup_errors', TRUE);
 include_once("controller/UsuarioController.php");
 use controller\UsuarioController as usuario;
 $usr = new usuario;
+if(isset($_GET['usuario'])){
+    $data = $usr->getUser($_GET['usuario']);
+    if(count($data)!=1){
+        header('Location:home.php?menu=usuario&submenu=listar');
+    }
+} else {
+    $data = $usr->getUserById($_SESSION['id']);
+}
+$data=$data[0];
+
 ?>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Cadastrar Usuário</h1>
+    <h1 class="h3 mb-0 text-gray-800">Editar Usuário</h1>
     <a href="home.php?menu=usuario&submenu=listar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i>
         Voltar para a Lista
@@ -23,14 +33,11 @@ $usr = new usuario;
                 <form class="form" method="POST" action="">
                     <div class="form-group">
                         <label for="login">Login</label>
-                        <input type="text" name="login" id="login">
+                        <input type="text" name="login" id="login" value="<?php echo $data->login;?>">
                     </div>
-                    <div class="form-group ">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha">
-                    </div>
-                        <input type="hidden" value="null" name="idPessoa" id="idPessoa">
-                        <input type="submit" class="btn btn-primary" value="Cadastrar">
+                        <input type="hidden" value="<?php echo $data->idPessoa;?>" name="idPessoa" id="idPessoa">
+                        <input type="hidden" value="<?php echo $data->idUsuario;?>" name="idUsuario" id="idUsuario">
+                        <input type="submit" class="btn btn-primary" value="Editar">
                 </form>
             </div>
         </div>
@@ -39,7 +46,7 @@ $usr = new usuario;
 
 <?php
     if($_POST){
-        $ret=$usr->insertUser($_POST);
+        $ret=$usr->editUser($_POST);
         echo $ret;
     }
 ?>
