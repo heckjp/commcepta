@@ -13,7 +13,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="home.php?menu=dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -26,34 +26,58 @@
         Gerenciar
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Produto Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduto" aria-expanded="true" aria-controls="collapseProduto">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Cadastros</span>
+          <span>Produto</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseProduto" class="collapse" aria-labelledby="headingProduto" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="home.php?menu=produto&submenu=listar">Listar</a>
+            <a class="collapse-item" href="home.php?menu=produto&submenu=cadastrar">Cadastrar</a>
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Cliente Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseCliente">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Cliente</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseCliente" class="collapse" aria-labelledby="headingCliente" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="home.php?menu=cliente&submenu=listar">Listar</a>
+            <a class="collapse-item" href="home.php?menu=cliente&submenu=cadastrar">Cadastrar</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Vendedor Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendedor" aria-expanded="true" aria-controls="collapseVendedor">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Vendedor</span>
+        </a>
+        <div id="collapseVendedor" class="collapse" aria-labelledby="headingVendedor" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="home.php?menu=vendedor&submenu=listar">Listar</a>
+            <a class="collapse-item" href="home.php?menu=vendedor&submenu=cadastrar">Cadastrar</a>
+          </div>
+        </div>
+      </li>
+
+       <!-- Nav Item - Usuario Collapse Menu -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuario" aria-expanded="true" aria-controls="collapseUsuario">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Usuário</span>
+        </a>
+        <div id="collapseUsuario" class="collapse" aria-labelledby="headingUsuario" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="home.php?menu=vendedor&submenu=listar">Listar</a>
+            <a class="collapse-item" href="home.php?menu=vendedor&submenu=cadastrar">Cadastrar</a>
           </div>
         </div>
       </li>
@@ -63,14 +87,14 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Vendas
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Gerenciar</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -90,7 +114,7 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Relatórios</span></a>
       </li>
 
       <!-- Nav Item - Tables -->

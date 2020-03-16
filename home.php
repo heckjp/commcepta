@@ -51,7 +51,7 @@ if(!isset($_SESSION['user'])){
         <div class="container-fluid">
 
         <?php 
-            include_once('view/page/dashboard.php')
+            include_once('router.php');
         ?>
 
         </div>
