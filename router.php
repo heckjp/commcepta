@@ -53,6 +53,22 @@
             }
         break;
 
+        case 'venda':
+            if(isset($submenu)){
+                if($submenu=='cadastrar'){
+                    include_once('view/page/venda/cadastrar.php');
+                }
+
+                if($submenu=='listar'){
+                    include_once('view/page/venda/listar.php');
+                }
+                
+            } else{
+                include_once('view/page/venda/listar.php');
+            }
+        break;
+
+
         case 'usuario':
             if(isset($submenu)){
                 if($submenu=='cadastrar'){

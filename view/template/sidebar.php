@@ -76,8 +76,8 @@
         </a>
         <div id="collapseUsuario" class="collapse" aria-labelledby="headingUsuario" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="home.php?menu=vendedor&submenu=listar">Listar</a>
-            <a class="collapse-item" href="home.php?menu=vendedor&submenu=cadastrar">Cadastrar</a>
+            <a class="collapse-item" href="home.php?menu=usuario&submenu=listar">Listar</a>
+            <a class="collapse-item" href="home.php?menu=usuario&submenu=cadastrar">Cadastrar</a>
           </div>
         </div>
       </li>
@@ -98,14 +98,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <a class="collapse-item" href="home.php?menu=venda&submenu=listar">Listar Vendas</a>
+            <a class="collapse-item" href="home.php?menu=venda&submenu=cadastrar">Realizar Venda</a>
           </div>
         </div>
       </li>
