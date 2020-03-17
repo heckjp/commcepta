@@ -7,7 +7,7 @@ ini_set('display_startup_errors', TRUE);
 require('Database.php');
 use model\Database as db;
 
-class Pessoa_Fisica  extends Pessoa{
+class Pessoa_Fisica extends Pessoa {
     public $conn;
     
     public function __construct(){

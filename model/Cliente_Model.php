@@ -7,7 +7,7 @@ ini_set('display_startup_errors', TRUE);
 require('Database.php');
 use model\Database as db;
 
-class Produto {
+class Cliente extends Pessoa_Fisica {
     public $conn;
     
     public function __construct(){
@@ -16,7 +16,7 @@ class Produto {
     }
 
     public function getAll(){
-        $sql = "SELECT * from Produto";
+        $sql = "SELECT * from Cliente";
         $result=$this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
@@ -27,39 +27,38 @@ class Produto {
 
     }
 
-    public function getProduto($id){
-        $sql = "SELECT * from Produto 
-                WHERE idProduto=$id";
+    public function getCliente($id){
+        $sql = "SELECT * from Cliente 
+                WHERE idCliente=$id";
         $result = $this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
             $data[] = $r;
         }
-        return json_decode(json_encode($data));
+        return json_encode($data);
     }
 
     public function create($data){
-        
-        $sql = "INSERT INTO Produto (nome,descricao,valor,codigo_barra) 
-                VALUES ('$data->nome','$data->descricao',$data->valor,'$data->codigo_barra')";
+
+        $sql = "INSERT INTO Cliente (ultima_compra,idPessoa_Fisica,idPessoa_Juridica) 
+                VALUES (NULL,$data->idPessoaFisica,$data->idPessoa_Juridica)";
         $result=$this->conn->query($sql);
 
         return $result;
     }
 
     public function update($data){
-        $sql = "UPDATE Produto 
-                set nome='$data->nome',descricao='$data->descricao',
-                valor=$data->valor,codigo_barra='$data->codigo_barra' 
-                WHERE idProduto=$data->idProduto";
-        $result = $this->conn->query($sql) or die(mysqli_error($this->conn));
+        $sql = "UPDATE Cliente 
+                set ultima_compra=$data->ultima_compra 
+                WHERE idCliente=$data->idCliente";
+        $result = $this->conn->query($sql);
 
         return $result;
     }
 
     public function delete($id){
-        $sql = "DELETE from Produto WHERE idProduto=$id";
-        $result= $this->conn->query($sql) or die(mysqli_error($this->conn));
+        $sql = "DELETE from Cliente WHERE idCliente=$id";
+        $result= $this->conn->query($sql);
 
         return $result;
     }

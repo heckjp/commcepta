@@ -7,7 +7,7 @@ ini_set('display_startup_errors', TRUE);
 require('Database.php');
 use model\Database as db;
 
-class Produto {
+class Pessoa_Juridica  extends Pessoa{
     public $conn;
     
     public function __construct(){
@@ -16,7 +16,7 @@ class Produto {
     }
 
     public function getAll(){
-        $sql = "SELECT * from Produto";
+        $sql = "SELECT * from Pessoa_Juridica";
         $result=$this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
@@ -27,39 +27,39 @@ class Produto {
 
     }
 
-    public function getProduto($id){
-        $sql = "SELECT * from Produto 
-                WHERE idProduto=$id";
+    public function getPessoaFisica($id){
+        $sql = "SELECT * from Pessoa_Juridica 
+                WHERE idPessoa_Juridica=$id";
         $result = $this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
             $data[] = $r;
         }
-        return json_decode(json_encode($data));
+        return json_encode($data);
     }
 
     public function create($data){
-        
-        $sql = "INSERT INTO Produto (nome,descricao,valor,codigo_barra) 
-                VALUES ('$data->nome','$data->descricao',$data->valor,'$data->codigo_barra')";
+
+        $sql = "INSERT INTO Pessoa_Juridica (razao_social,cnpj,idPessoa) 
+                VALUES ('$data->razao_social','$data->cnpj',$data->idPessoa)";
         $result=$this->conn->query($sql);
 
         return $result;
     }
 
     public function update($data){
-        $sql = "UPDATE Produto 
-                set nome='$data->nome',descricao='$data->descricao',
-                valor=$data->valor,codigo_barra='$data->codigo_barra' 
-                WHERE idProduto=$data->idProduto";
-        $result = $this->conn->query($sql) or die(mysqli_error($this->conn));
+        $sql = "UPDATE Pessoa_Juridica 
+                set razao_social='$data->razao_social',cnpj='$data->cnpj',
+                idPessoa='$data->idPessoa',
+                WHERE idPessoa_Juridica=$data->idPessoa_Juridica";
+        $result = $this->conn->query($sql);
 
         return $result;
     }
 
     public function delete($id){
-        $sql = "DELETE from Produto WHERE idProduto=$id";
-        $result= $this->conn->query($sql) or die(mysqli_error($this->conn));
+        $sql = "DELETE from Pessoa_Juridica WHERE idPessoa_Juridica=$id";
+        $result= $this->conn->query($sql);
 
         return $result;
     }

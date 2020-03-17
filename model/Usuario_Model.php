@@ -10,7 +10,7 @@ require('Database.php');
 use model\Database as db;
 
 
-class Usuario{
+class Usuario {
 
     public $conn;
     public function __construct(){
@@ -30,32 +30,47 @@ class Usuario{
         return json_encode($data);
     }
 
-    public function getUser($usr,$pwd){
+    public function getUserById($usr){
+        $usr = mysqli_real_escape_string($this->conn,$usr);
         $sql = "SELECT * from Usuario 
-                WHERE login='$usr' 
-                AND senha='$pwd'";
+                WHERE idUsuario=$usr";
         $result = $this->conn->query($sql);
         $data = array();
         while($r = $result->fetch_assoc()){
             $data[]=$r;
         }
 
-        return json_encode($data);
+        return json_decode(json_encode($data));
+    }
+
+
+    public function getUserByLogin($usr){
+        $usr = mysqli_real_escape_string($this->conn,$usr);
+        $sql = "SELECT * from Usuario 
+                WHERE login='$usr'";
+        $result = $this->conn->query($sql);
+        $data = array();
+        while($r = $result->fetch_assoc()){
+            $data[]=$r;
+        }
+
+        return json_decode(json_encode($data));
     }
 
     public function create($data){
-
+        $login = mysqli_real_escape_string($this->conn,$data->login);
         $sql = "INSERT INTO Usuario (login,senha,idPessoa)
-                VALUES ($data->login,$data->senha,$data->idPessoa)";
-        $result=$this->conn->query($sql);
-
+                VALUES ('$login','$data->senha',$data->idPessoa)";
+        $result=$this->conn->query($sql) or die(mysqli_error($this->conn));
         return $result;
     }
 
     public function updateUser($data){
-        $sql = "UPDATE Usuario set login='$data->login'
+    
+        $login = mysqli_real_escape_string($this->conn,$data->login);
+        $sql = "UPDATE Usuario set login='$login'  
                 WHERE idUsuario=$data->idUsuario";
-        $result = $this->conn->query($sql);
+        $result = $this->conn->query($sql) or die(mysqli_error($this->conn));
 
         return $result;
     }
@@ -68,9 +83,23 @@ class Usuario{
         return $result;
     }
 
-    public function deleteUser($id){
+    public function checkLogin($usr,$pwd){
+
+        $usr = mysqli_real_escape_string($this->conn,$usr);
+        $sql = "SELECT * from Usuario 
+                WHERE idUsuario=$usr";
+        $result = $this->conn->query($sql);
+        $data = array();
+        while($r = $result->fetch_assoc()){
+            $data[]=$r;
+        }
+
+        return json_decode(json_encode($data));
+    }
+
+    public function delete($id){
         $sql = "DELETE from Usuario WHERE idUsuario=$id";
-        $result= $this->conn->query($sql);
+        $result= $this->conn->query($sql) or die(mysqli_error($this->conn));
 
         return $result;
     }
@@ -82,9 +111,6 @@ class Usuario{
     }
 
 }
-
-$usuarios = new Usuario;
-print_r($usuarios->getAll());
 
 
 ?>
