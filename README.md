@@ -23,6 +23,6 @@ Crie um usuario na tabela  Usuario com o login de sua preferencia e 1 senha util
 
 Se preferir utilize a senha seguir: 
 
-$2y$10$dSoM19qw6D5bR2QXDgwvMeEYye2gC9uLSTgkQRs1ELMYwlUeLds5.
+$2y$10$dSoM19qw6D5bR2QXDgwvMeEYye2gC9uLSTgkQRs1ELMYwlUeLds5. //senha
 
 
