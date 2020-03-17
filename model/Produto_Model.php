@@ -35,13 +35,13 @@ class Produto {
         while($r = $result->fetch_assoc()){
             $data[] = $r;
         }
-        return json_encode($data);
+        return json_decode(json_encode($data));
     }
 
     public function create($data){
-
+        
         $sql = "INSERT INTO Produto (nome,descricao,valor,codigo_barra) 
-                VALUES ('$data->nome','$data->descricao',$data->valor,$data->codigo_barra)";
+                VALUES ('$data->nome','$data->descricao',$data->valor,'$data->codigo_barra')";
         $result=$this->conn->query($sql);
 
         return $result;
@@ -50,16 +50,16 @@ class Produto {
     public function update($data){
         $sql = "UPDATE Produto 
                 set nome='$data->nome',descricao='$data->descricao',
-                valor=$data->valor,codigo_barra='$data->codigo_barra',
+                valor=$data->valor,codigo_barra='$data->codigo_barra' 
                 WHERE idProduto=$data->idProduto";
-        $result = $this->conn->query($sql);
+        $result = $this->conn->query($sql) or die(mysqli_error($this->conn));
 
         return $result;
     }
 
     public function delete($id){
         $sql = "DELETE from Produto WHERE idProduto=$id";
-        $result= $this->conn->query($sql);
+        $result= $this->conn->query($sql) or die(mysqli_error($this->conn));
 
         return $result;
     }

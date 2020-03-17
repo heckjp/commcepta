@@ -21,6 +21,10 @@
                 if($submenu=='editar'){
                     include_once('view/page/produto/editar.php');
                 }
+
+                if($submenu=='delete'){
+                    include_once('view/page/produto/delete.php');
+                }
                 
             } else{
                 include_once('view/page/produto/listar.php');
